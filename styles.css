@@ -1,0 +1,132 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0D0D0D; /* Deep Black */
+    color: #E0E0E0; /* Light Gray */
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+header {
+    background: #4B0082; /* Dark Purple */
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    color: #E0E0E0;
+}
+
+/* Navigation */
+nav ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #E0E0E0;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #A020F0; /* Brighter Purple */
+}
+
+/* Content Area */
+#content {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Buttons */
+button, .btn {
+    background: #A020F0; /* Bright Purple */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+button:hover, .btn:hover {
+    background: #6A0DAD; /* Darker Purple */
+}
+
+/* Product Listings */
+.shop .product-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.product {
+    background: #222; /* Dark Gray */
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    border: 2px solid #6A0DAD; /* Purple Outline */
+}
+#product-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#product-list .product {
+    background: #222;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    border: 2px solid #6A0DAD;
+}
+
+#product-list img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Dashboard Forms */
+.dashboard form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: auto;
+}
+
+input, select {
+    padding: 10px;
+    border: 2px solid #4B0082;
+    border-radius: 5px;
+    background: #111;
+    color: white;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #4B0082;
+    color: white;
+}
