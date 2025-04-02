@@ -105,6 +105,95 @@ button:hover, .btn:hover {
     width: 100%;
     border-radius: 5px;
 }
+/* Shop Page Styles */
+.product-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.product {
+    background: #222;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px;
+    width: 200px;
+    border: 2px solid #6A0DAD;
+}
+
+.product img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #6A0DAD;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+button:hover {
+    background-color: #500A8B;
+}
+
+/* Cart Page Styles */
+.cart-item {
+    display: flex;
+    align-items: center;
+    background: #222;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.cart-item img {
+    width: 50px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #6A0DAD;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #500A8B;
+}
+/* Checkout Page Styles */
+.checkout {
+    background: #222;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.checkout input, .checkout textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #444;
+    background: #333;
+    color: white;
+}
+
+.checkout button {
+    background-color: #6A0DAD;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.checkout button:hover {
+    background-color: #500A8B;
+}
 
 /* Dashboard Forms */
 .dashboard form {
