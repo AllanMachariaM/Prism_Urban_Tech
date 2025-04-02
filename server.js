@@ -26,11 +26,6 @@ db.connect(err => {
     console.log("✅ Connected to MySQL database.");
 });
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server running on port ${PORT}`);
-});
-
 // API Route to Handle Order Submission
 app.post("/api/orders", (req, res) => {
     const { name, email, address, total, cart } = req.body;
@@ -49,8 +44,61 @@ app.post("/api/orders", (req, res) => {
     });
 });
 
-// Start Server
+// ✅ Only keep this one declaration of PORT
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
+
+
+// API Route to Fetch All Orders
+app.get("/api/orders", (req, res) => {
+    const query = "SELECT * FROM orders";
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error("Error fetching orders:", err);
+            return res.status(500).json({ error: "Database error." });
+        }
+        res.json(results); // Send all orders as a response
+    });
+});
+
+// API Route to Update Order Status
+app.put("/api/orders/:id", (req, res) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if (!status) {
+        return res.status(400).json({ error: "Status is required." });
+    }
+
+    const query = "UPDATE orders SET status = ? WHERE id = ?";
+    db.query(query, [status, id], (err, result) => {
+        if (err) {
+            console.error("Error updating order status:", err);
+            return res.status(500).json({ error: "Database error." });
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Order not found." });
+        }
+        res.json({ message: "Order status updated successfully!" });
+    });
+});
+
+// API Route to Delete an Order
+app.delete("/api/orders/:id", (req, res) => {
+    const { id } = req.params;
+
+    const query = "DELETE FROM orders WHERE id = ?";
+    db.query(query, [id], (err, result) => {
+        if (err) {
+            console.error("Error deleting order:", err);
+            return res.status(500).json({ error: "Database error." });
+        }
+        if (result.affectedRows === 0) {
+            return res.status(404).json({ error: "Order not found." });
+        }
+        res.json({ message: "Order deleted successfully!" });
+    });
+});
+
