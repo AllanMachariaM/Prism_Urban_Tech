@@ -119,6 +119,60 @@ function loadCheckoutPage() {
         }
     });
 }
+let products = [
+    { name: 'Product 1', price: 10.00, description: 'This is product 1', imageUrl: 'product1.jpg' },
+    { name: 'Product 2', price: 15.00, description: 'This is product 2', imageUrl: 'product2.jpg' },
+    { name: 'Product 3', price: 20.00, description: 'This is product 3', imageUrl: 'product3.jpg' }
+];
+
+let cart = [];
+
+function addToCart(index) {
+    const product = products[index];
+    cart.push(product);
+    updateCartDisplay();
+}
+
+function removeFromCart(index) {
+    cart.splice(index, 1);  // Removes the product at the specified index
+    updateCartDisplay();
+}
+
+function updateCartDisplay() {
+    const cartElement = document.getElementById("cart");
+    const cartCount = document.getElementById("cart-count");
+    const totalPriceElement = document.getElementById("total-price");
+
+    cartElement.innerHTML = '';  // Clear the cart display
+
+    // If the cart is empty
+    if (cart.length === 0) {
+        cartElement.innerHTML = '<p>Your cart is empty.</p>';
+        cartCount.textContent = '0';
+        totalPriceElement.textContent = '$0.00';
+        return;
+    }
+
+    // Update the cart items
+    cart.forEach((item, index) => {
+        const itemElement = document.createElement('div');
+        itemElement.classList.add('cart-item');
+
+        itemElement.innerHTML = `
+            <img src="${item.imageUrl}" alt="${item.name}" class="cart-item-image">
+            <div>
+                <p>${item.name} - $${item.price.toFixed(2)}</p>
+                <p>${item.description}</p>
+                <button onclick="removeFromCart(${index})">Remove</button>
+            </div>
+        `;
+        cartElement.appendChild(itemElement);
+    });
+
+    // Update the cart count and total price
+    cartCount.textContent = cart.length;
+    totalPriceElement.textContent = '$' + cart.reduce((total, item) => total + item.price, 0).toFixed(2);
+}
 
 
 // ========== DASHBOARD FUNCTIONALITY ==========
